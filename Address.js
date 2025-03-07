@@ -84,6 +84,16 @@ try{
 }
 }
 
+function deleteContact(name){
+    let index=addressBook.findIndex(contact => contact.first===name||contact.last_names===name);
+    if (index === -1) {
+        console.log("Contact Not Found!");
+        return;
+    }
+    addressBook.splice(index, 1);
+console.log("Element deleted.")
+}
+
 let adding1 = new AddressClass("Deepak", "Singh", "House no 45", "Bhopal", "Madhya Pradesh", "462046", "9691876648", "singh017deepak@gmail.com");
 let adding2 = new AddressClass("Rahul", "Sharma", "Sector 22", "Noida", "Uttar Pradesh", "201301", "9876543210", "rahul@example.com");
 
@@ -94,5 +104,7 @@ console.log("Address Book Before Update:");
 console.log(addressBook);
 
 editContact("Deepak", { city: "Indore", phone_number: "9988776655" });
+
+deleteContact("Deepak");
 
 console.log(addressBook);
