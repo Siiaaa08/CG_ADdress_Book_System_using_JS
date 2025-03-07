@@ -53,7 +53,7 @@ class AddressClass {
     }
 }
 
-
+//edit contatcts
 function editContact(name, addressObject){
     let index=addressBook.findIndex(contact => contact.first===name||contact.last_names===name);
     if (index === -1) {
@@ -84,6 +84,7 @@ try{
 }
 }
 
+//delete contact
 function deleteContact(name){
     let index=addressBook.findIndex(contact => contact.first===name||contact.last_names===name);
     if (index === -1) {
@@ -93,21 +94,26 @@ function deleteContact(name){
     addressBook.splice(index, 1);
 console.log("Element deleted.")
 }
+
+//address size
 function sizeAddress(){
     console.log("The total number of Address :- "+addressBook.length);
+}
+
+//adding 
+function adding(element){
+    let duplicate=addressBook.filter(c=>c.first===element.first&&c.last_names===element.last_names);
+
+    if(duplicate.length>0){
+        console.log("Element already present!!!");
+    }else{
+        addressBook.push(element);
+        console.log("Element added!!!");
+    }
 }
 let adding1 = new AddressClass("Deepak", "Singh", "House no 45", "Bhopal", "Madhya Pradesh", "462046", "9691876648", "singh017deepak@gmail.com");
 let adding2 = new AddressClass("Rahul", "Sharma", "Sector 22", "Noida", "Uttar Pradesh", "201301", "9876543210", "rahul@example.com");
 
-addressBook.push(adding1);
-addressBook.push(adding2);
-
-console.log("Address Book Before Update:");
-console.log(addressBook);
-
-editContact("Deepak", { city: "Indore", phone_number: "9988776655" });
-
-deleteContact("Deepak");
-
-sizeAddress();
-console.log(addressBook);
+adding(adding1);
+adding(adding2);
+adding(adding1);
