@@ -135,6 +135,16 @@ function searchByCityOrState(location){
         console.log("Not Found!!!");
     }
 }
+
+function countByCityOrState(location){
+    let count = addressBook.reduce((acc, contact) => {
+        if (contact.city === location || contact.state === location) {
+            acc[location] = (acc[location] || 0) + 1;
+        }
+        return acc;
+    }, {});
+    console.log("Information"+ JSON.stringify(count, null, 2));
+}
 let adding1 = new AddressClass("Deepak", "Singh", "House no 45", "Bhopal", "Madhya Pradesh", "462046", "9691876648", "singh017deepak@gmail.com");
 let adding2 = new AddressClass("Rahul", "Sharma", "Sector 22", "Noida", "Uttar Pradesh", "201301", "9876543210", "rahul@example.com");
 
@@ -142,6 +152,7 @@ let adding2 = new AddressClass("Rahul", "Sharma", "Sector 22", "Noida", "Uttar P
 adding(adding1);
 adding(adding2);
 adding(adding1);
+countByCityOrState("Bhopal");
 
 searchByCityOrState("bhopal");
 searchByCityOrState("Madhya Pradesh");
