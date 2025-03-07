@@ -141,6 +141,25 @@ function sortByName(){
     console.log("Sorted elements");
     addressBook.forEach(contact => console.log(`${contact.first} ${contact.last_names} :- ${contact.email}`));
 }
+function sortByZip(){
+    addressBook.sort((a,b)=>a.zip.localeCompare(b.zip));
+    console.log("Sorted elements");
+    addressBook.forEach(contact => console.log(`${contact.first} ${contact.last_names} :- ${contact.email}`));
+
+}
+function sortByState(){
+    addressBook.sort((a,b)=>a.state.localeCompare(b.state));
+    console.log("Sorted elements");
+    addressBook.forEach(contact => console.log(`${contact.first} ${contact.last_names} :- ${contact.email}`));
+
+}
+function sortByCity(){
+    addressBook.sort((a,b)=>a.city.localeCompare(b.city));
+    console.log("Sorted elements");
+    addressBook.forEach(contact => console.log(`${contact.first} ${contact.last_names} :- ${contact.email}`));
+
+}
+
 function countByCityOrState(location){
     let count = addressBook.reduce((acc, contact) => {
         if (contact.city === location || contact.state === location) {
@@ -159,3 +178,6 @@ adding(adding2);
 adding(adding1);
 
 sortByName();
+sortByCity();
+sortByState();
+sortByZip();
