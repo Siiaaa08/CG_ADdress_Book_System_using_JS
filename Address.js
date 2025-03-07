@@ -53,8 +53,46 @@ class AddressClass {
     }
 }
 
-let adding=new AddressClass("Deepak","Singh","House no 45","Bhopal","Madhya Pradesh","462046","9691876648","singh017deepak@gmail.com");
-addressBook.push(adding);
-console.log(adding);
 
-console.log(addressBook)
+function editContact(name, addressObject){
+    let index=addressBook.findIndex(contact => contact.first===name||contact.last_names===name);
+    if (index === -1) {
+        console.log("Contact Not Found!");
+        return;
+    }
+let contact=addressBook[index];
+try{
+    if(addressObject.first){
+        contact.first=nameCheck(addressObject.first);
+    }if(addressObject.last_names){
+        contact.last_names=nameCheck(addressObject.last_names);
+    }if(addressObject.address){
+        contact.address=addressCheck(addressObject.address);
+    }if(addressObject.city){
+        contact.city=addressCheck(addressObject.city);
+    }if(addressObject.state){
+        contact.state=addressCheck(addressObject.state);
+    }if(addressObject.zip){
+        contact.zip=zipCheck(addressObject.zip);
+    }if(addressObject.phone_number){
+        contact.phone_number=numCheck(addressObject.phone_number);
+    }if(addressObject.email){
+        contact.email=emailCheck(addressObject.email);
+    }
+}catch(error){
+    console.log("error",error.message);
+}
+}
+
+let adding1 = new AddressClass("Deepak", "Singh", "House no 45", "Bhopal", "Madhya Pradesh", "462046", "9691876648", "singh017deepak@gmail.com");
+let adding2 = new AddressClass("Rahul", "Sharma", "Sector 22", "Noida", "Uttar Pradesh", "201301", "9876543210", "rahul@example.com");
+
+addressBook.push(adding1);
+addressBook.push(adding2);
+
+console.log("Address Book Before Update:");
+console.log(addressBook);
+
+editContact("Deepak", { city: "Indore", phone_number: "9988776655" });
+
+console.log(addressBook);
