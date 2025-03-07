@@ -125,6 +125,16 @@ function searchByCity(city){
         console.log("Not Found!!!");
     }
 }
+function searchByCityOrState(location){
+    let loc=addressBook.filter(contact=>(contact.city.toLowerCase()===location.toLowerCase())||(contact.state.toLowerCase()===location.toLowerCase())).map(contact => `${contact.first} ${contact.last_names} - ${contact.email}`);
+    if(loc.length>0){
+        console.log("Found!!!");
+        console.log(loc);
+    }
+    else{
+        console.log("Not Found!!!");
+    }
+}
 let adding1 = new AddressClass("Deepak", "Singh", "House no 45", "Bhopal", "Madhya Pradesh", "462046", "9691876648", "singh017deepak@gmail.com");
 let adding2 = new AddressClass("Rahul", "Sharma", "Sector 22", "Noida", "Uttar Pradesh", "201301", "9876543210", "rahul@example.com");
 
@@ -133,4 +143,5 @@ adding(adding1);
 adding(adding2);
 adding(adding1);
 
-searchByCity("Bhopal");
+searchByCityOrState("bhopal");
+searchByCityOrState("Madhya Pradesh");
